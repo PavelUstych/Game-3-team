@@ -4,7 +4,7 @@ import os
 pygame.init()
 
 win_height = 800
-win_width = 850
+win_width = 800
 
 # 5. Створити функцію create_path, що знаходить абсолютний шлях до файлу.
 # Застосовуємо модуль os.path та його методи abspath(), join()

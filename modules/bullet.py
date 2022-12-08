@@ -35,6 +35,3 @@ class Bullet(settings.Settings):
         if self.MOVE_BULLET:
             self.RECT.x += self.STEP * derection
             self.X += self.STEP * derection
-
-
-

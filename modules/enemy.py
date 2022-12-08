@@ -4,6 +4,7 @@ import random
 
 import modules.sprites as sprites
 import modules.bullet as bullet
+import modules.heart as heart
 
 win_height = 800
 win_width = 800
@@ -56,6 +57,13 @@ class Enemy(sprites.Sprite):
                 self.RECT.x = self.RECT.x - self.STEP 
 
             self.animation(folder= name_folder,count_while= count_while,last_img= last_img, first_img=first_img)
+            
+            
+        # if self.DIRECTION == "R" or self.DIRECTION == "L":
+        #     if name_sprite.RECT.collidepoint((self.RECT.x, self.RECT.y)):
+        #         heart.count_heart -= 1
+                
+                
 
     def shoot(self, win, count_while, list_rect, width, height, name_sprite):
         self.COUNT_BULLET += 1

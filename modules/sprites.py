@@ -4,9 +4,9 @@ import modules.settings as settings
 import modules.area as area
 
 # pygame.init()
-
+# nac = 1
 win_height = 800
-win_width = 850
+win_width = 800
 
 # 6. Створити клас Sprite, в методі init задати 5 параметрів зі значенням за замовчуванням None
 class Sprite(settings.Settings):
@@ -56,9 +56,15 @@ class Sprite(settings.Settings):
             self.animation(folder= "player",count_while=5,last_img= 11, first_img=5)
         # умова, що відповідає за спокійний стан спрайта - спарайт стоїть на місці
         else:
+            global nac
+            # self.NAME_IMAGE = f"images/player/{nac}.png"
             self.NAME_IMAGE = "images/player/1.png"
             self.direction()
-#
+            # if nac > 0 and nac < 4:
+            #     nac += 1
+            # else:
+            #     nac = 1
+#   
     def can_move_right(self, list_rect):        
         for block in list_rect:
             if self.DIRECTION == "R":

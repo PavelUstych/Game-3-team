@@ -1,16 +1,13 @@
 # 1. Імпортувати модуль pygame
 import pygame 
-# 2. Імпортувати модуль os
-import os 
-# 3. Імпортувати модуль random
-import random 
 #
 import modules.area as area
 import modules.settings as settings
 import modules.sprites as sprites
 import modules.enemy as enemy
 import modules.heart as heart
-# 4. Ініціалізувати налаштування pygame
+import modules.button as button
+# 3. Ініціалізувати налаштування pygame
 pygame.init()
 
 win_height = 800
@@ -18,11 +15,11 @@ win_width = 800
 
 start_game = True
   
-# 8.Cтворюємо ігровое вікно з ім'ям win 
+# 4.Cтворюємо ігровое вікно з ім'ям win 
 win = pygame.display.set_mode((win_width,win_height))
-# 9. Задаємо назву ігрового вікна
-pygame.display.set_caption("GAME")
-# 10. Створюємо основну функцію гри run_game:
+# 5. Задаємо назву ігрового вікна
+pygame.display.set_caption("Advanture of man")
+# 6. Створюємо основну функцію гри run_game:
 def run_game():
 
     global start_game
@@ -31,7 +28,6 @@ def run_game():
     
     # - задаємо змінну game, що відповідає за роботу циклу   
     game = True
-    # print(area.list_create_area)
     # - задаємо ігровий цикл while, 
     while game:
     # - задаємо умову закриття ігрового вікна,
@@ -39,11 +35,19 @@ def run_game():
             if event.type == pygame.QUIT:
                 game = False
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1 and start_game:
-                start_game = False
-    # - задаємо фон ігрового вікна (метод fill)
-        # win.fill((128,0,255))
+                mouse_cor = pygame.mouse.get_pos()
+                if button.check_mouse_cor(button.play_button, mouse_cor):
+                    start_game = False
+                elif button.check_mouse_cor(button.settings_button, mouse_cor):
+                    settings_win_height = 800
+                    settings_win_width = 800
+                    win2 = pygame.display.set_mode((settings_win_width,settings_win_height))
+                    pygame.display.set_caption("Advanture of man")
+
         if start_game:
             settings.start.blit_sprite(win)
+            button.play_button.blit_sprite(win)
+            button.settings_button.blit_sprite(win)
     # - задіємо об'єкт sprite і викликаємо його метод blit_sprite(), малюємо зображення на ігровому вікні, в центрі екрану
         if not heart.game_over and not start_game:
 
